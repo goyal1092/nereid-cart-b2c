@@ -4,7 +4,7 @@
 
     Cart test Case
 
-    :copyright: (c) 2010-2013 by Openlabs Technologies & Consulting (P) Ltd.
+    :copyright: (c) 2010-2014 by Openlabs Technologies & Consulting (P) Ltd.
     :license: GPLv3, see LICENSE for more details
 '''
 import unittest
@@ -137,7 +137,7 @@ class TestCart(BaseTestCase):
                 self.assertEqual(rv.status_code, 200)
                 cart_data1 = rv.data[6:]
 
-                #Login now and access cart
+                # Login now and access cart
                 self.login(c, 'email@example.com', 'password')
                 rv = c.get('/cart')
                 self.assertEqual(rv.status_code, 200)

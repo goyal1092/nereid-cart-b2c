@@ -4,7 +4,7 @@
 
     Test product features
 
-    :copyright: (c) 2010-2013 by Openlabs Technologies & Consulting (P) LTD
+    :copyright: (c) 2010-2014 by Openlabs Technologies & Consulting (P) LTD
     :license: GPLv3, see LICENSE for more details
 '''
 import json
@@ -373,7 +373,7 @@ class BaseTestCase(NereidTestCase):
             'currencies': [('set', [self.usd.id])],
         }])
 
-         # Create product templates with products
+        # Create product templates with products
         self.template1, = self._create_product_template(
             'product-1',
             [{
