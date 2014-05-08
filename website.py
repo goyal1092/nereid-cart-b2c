@@ -176,8 +176,14 @@ class Website:
                 numbers.format_number, locale=request.nereid_language.code
             )
 
+            get_product_image = lambda product: line.product.image_sets[0].large_image or \
+                line.product.image_sets[0].medium_image or \
+                line.product.image_sets[0].thumbnail_image or None
+
             rv['cart'] = {
                 'lines': [{
+                    'url': get_product_image(line.product) and
+                           get_product_image(line.product).url,
                     'product': line.product.name,
                     'quantity': number_format(line.quantity),
                     'unit': line.unit.symbol,
