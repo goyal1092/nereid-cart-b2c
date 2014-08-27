@@ -47,6 +47,7 @@ class BaseTestCase(NereidTestCase):
         self.Location = POOL.get('stock.location')
         self.Party = POOL.get('party.party')
         self.Locale = POOL.get('nereid.website.locale')
+        self.Node = POOL.get('product.tree_node')
 
         self.templates = {
             'home.jinja': '{{get_flashed_messages()}}',
@@ -332,6 +333,12 @@ class BaseTestCase(NereidTestCase):
         }])
         self.User.set_preferences({'shop': self.shop})
 
+        node, = self.Node.create([{
+            'name': 'root',
+            'slug': 'root',
+            'type_': 'catalog',
+        }])
+
         self.NereidWebsite.create([{
             'name': 'localhost',
             'shop': self.shop,
@@ -339,6 +346,7 @@ class BaseTestCase(NereidTestCase):
             'application_user': USER,
             'default_locale': self.locale_en_us.id,
             'guest_user': guest_user,
+            'root_tree_node': node,
             'countries': [('add', self.available_countries)],
             'currencies': [('add', [self.usd.id])],
         }])
